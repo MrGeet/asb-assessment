@@ -14,6 +14,19 @@ export const Form = () => {
     expDateError: '',
   });
 
+  /**
+   * Handle Credit Card input
+   * Only allow 16 digits
+   * Add space before every n%4===0 element
+   */
+  const handleChangeCreditCard = (value: string) => {
+    const newInput = value.replace(/\D/g, '');
+    if (newInput.length > 16) return;
+    const result = newInput.split('').reduce((acc, cur, ind) => (ind !== 0 && ind % 4 === 0 ? `${acc} ${cur}` : `${acc}${cur}`), '');
+
+    setInputFields((prevState) => ({ ...prevState, creditCard: result }));
+  };
+
   const tempChange = () => {};
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
@@ -26,7 +39,7 @@ export const Form = () => {
     <FormContainer>
       <FormWrapper onSubmit={handleSubmit}>
         <InputField
-          onChange={tempChange}
+          onChange={handleChangeCreditCard}
           value={inputFields.creditCard}
           id="creditCard"
           label="Credit Card Number"
