@@ -3,6 +3,7 @@ import { InputField } from './InputField';
 import { FormContainer, FormRow, FormWrapper } from '../styledComponents/FormStyles';
 import { Button } from '../globalStyles';
 import moment from 'moment';
+import { Spinner } from './Spinner';
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState({
@@ -15,6 +16,7 @@ export const Form = () => {
     cvcError: '',
     expDateError: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   /**
    * Handle Credit Card input
@@ -76,6 +78,11 @@ export const Form = () => {
 
     if (creditCardError || cvcError || expDateError) return;
 
+    //fake http request delay
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubmitting(false);
+
     console.log(inputFields);
     alert('Form was submitted');
     setInputFields({
@@ -107,7 +114,7 @@ export const Form = () => {
             error={errors.expDateError}
           />
         </FormRow>
-        <Button> Submit</Button>
+        <Button> {isSubmitting ? <Spinner size={2} color="black" /> : <p>Submit</p>}</Button>
       </FormWrapper>
     </FormContainer>
   );
