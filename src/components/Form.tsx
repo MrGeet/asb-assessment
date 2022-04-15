@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { InputField } from './InputField';
 import { FormContainer, FormRow, FormWrapper } from '../styledComponents/FormStyles';
+import { Button } from '../globalStyles';
+import moment from 'moment';
 
 export const Form = () => {
   const [inputFields, setInputFields] = useState({
@@ -58,7 +60,29 @@ export const Form = () => {
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
+    const { creditCard, cvc, expDate } = { ...inputFields };
+
+    //validate cvc
+    const cvcError = cvc.length < 3 || cvc.length > 3 ? 'Invalid CVC' : '';
+
+    //validate date
+    const date = moment(expDate, 'MM/YY');
+    const expDateError = !date.isValid() ? 'Invalid Expiry Date' : '';
+
+    //validate credit card number
+    const creditCardError = creditCard.replace(/\s+/g, '').length !== 16 ? 'Invalid Credit Card Number' : '';
+
+    setErrors({ creditCardError, expDateError, cvcError });
+
+    if (creditCardError || cvcError || expDateError) return;
+
+    console.log(inputFields);
     alert('Form was submitted');
+    setInputFields({
+      creditCard: '',
+      cvc: '',
+      expDate: '',
+    });
   };
 
   return (
@@ -83,7 +107,7 @@ export const Form = () => {
             error={errors.expDateError}
           />
         </FormRow>
-        button
+        <Button> Submit</Button>
       </FormWrapper>
     </FormContainer>
   );

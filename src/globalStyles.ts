@@ -1,21 +1,21 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export interface IStyledProps {
-	margin?: string;
-	padding?: string;
-	justify?: string;
-	align?: string;
-	mb?: string;
-	mt?: string;
-	position?: string;
-	width?: string;
-	height?: string;
-	wrap?: string;
-	textAlign?: string;
-	fontSize?: string;
-	gap?: string;
-	display?: string;
-	color?: string;
+  margin?: string;
+  padding?: string;
+  justify?: string;
+  align?: string;
+  mb?: string;
+  mt?: string;
+  position?: string;
+  width?: string;
+  height?: string;
+  wrap?: string;
+  textAlign?: string;
+  fontSize?: string;
+  gap?: string;
+  display?: string;
+  color?: string;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -28,59 +28,74 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const Container = styled.div<IStyledProps>`
-	z-index: 1;
-	width: 100%;
-	max-width: 1300px;
-	margin: ${({ margin }) => (margin ? margin : '0 auto')};
-	padding: ${({ padding }) => (padding ? padding : '0 50px')};
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin: ${({ margin }) => (margin ? margin : '0 auto')};
+  padding: ${({ padding }) => (padding ? padding : '0 50px')};
 
-	@media screen and (max-width: 960px) {
-		padding-right: 30px;
-		padding-left: 30px;
-	}
+  @media screen and (max-width: 960px) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
 `;
 
 export const Row = styled.div<IStyledProps>`
-	display: flex;
-	justify-content: ${({ justify }) => (justify ? justify : '')};
-	align-items: ${({ align }) => (align ? align : '')};
-	gap: ${({ gap }) => (gap ? gap : '')};
-	padding: ${({ padding }) => (padding ? padding : '')};
-	margin: ${({ margin }) => (margin ? margin : '')};
-	margin-bottom: ${({ mb }) => (mb ? mb : '')};
-	margin-top: ${({ mt }) => (mt ? mt : '')};
-	position: ${({ position }) => (position ? position : '')};
-	width: ${({ width }) => (width ? width : '100%')};
-	height: ${({ height }) => (height ? height : '')};
-	flex-wrap: ${({ wrap }) => (wrap ? wrap : '')};
-	color: ${({ color }) => (color ? color : '')};
-	text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
+  display: flex;
+  justify-content: ${({ justify }) => (justify ? justify : '')};
+  align-items: ${({ align }) => (align ? align : '')};
+  gap: ${({ gap }) => (gap ? gap : '')};
+  padding: ${({ padding }) => (padding ? padding : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
+  margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  margin-top: ${({ mt }) => (mt ? mt : '')};
+  position: ${({ position }) => (position ? position : '')};
+  width: ${({ width }) => (width ? width : '100%')};
+  height: ${({ height }) => (height ? height : '')};
+  flex-wrap: ${({ wrap }) => (wrap ? wrap : '')};
+  color: ${({ color }) => (color ? color : '')};
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
 `;
 
 export const Column = styled.div<IStyledProps>`
-	display: flex;
-	flex-direction: column;
-	justify-content: ${({ justify }) => (justify ? justify : '')};
-	align-items: ${({ align }) => (align ? align : '')};
-	gap: ${({ gap }) => (gap ? gap : '')};
-	padding: ${({ padding }) => (padding ? padding : '')};
-	margin: ${({ margin }) => (margin ? margin : '')};
-	margin-bottom: ${({ mb }) => (mb ? mb : '')};
-	margin-top: ${({ mt }) => (mt ? mt : '')};
-	position: ${({ position }) => (position ? position : '')};
-	width: ${({ width }) => (width ? width : '')};
-	height: ${({ height }) => (height ? height : '')};
-	color: ${({ color }) => (color ? color : '')};
-	text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ justify }) => (justify ? justify : '')};
+  align-items: ${({ align }) => (align ? align : '')};
+  gap: ${({ gap }) => (gap ? gap : '')};
+  padding: ${({ padding }) => (padding ? padding : '')};
+  margin: ${({ margin }) => (margin ? margin : '')};
+  margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  margin-top: ${({ mt }) => (mt ? mt : '')};
+  position: ${({ position }) => (position ? position : '')};
+  width: ${({ width }) => (width ? width : '')};
+  height: ${({ height }) => (height ? height : '')};
+  color: ${({ color }) => (color ? color : '')};
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
 `;
 
 export const Typography = styled.p<IStyledProps>`
-	text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
-	color: ${({ color }) => (color ? color : '')};
-	font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
-	margin: ${({ margin }) => (margin ? margin : '')};
-	margin-bottom: ${({ mb }) => (mb ? mb : '')};
-	margin-top: ${({ mt }) => (mt ? mt : '')};
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
+  color: ${({ color }) => (color ? color : '')};
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
+  margin: ${({ margin }) => (margin ? margin : '')};
+  margin-bottom: ${({ mb }) => (mb ? mb : '')};
+  margin-top: ${({ mt }) => (mt ? mt : '')};
+`;
+
+export const Button = styled.button`
+  border-radius: 0.2rem;
+  background-color: #fcbd1b;
+  height: 50px;
+  padding: 2px 6px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 1.1rem;
+
+  &:hover {
+    background-color: #ff9e1e;
+    color: white;
+  }
 `;
 
 export default GlobalStyle;
