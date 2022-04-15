@@ -2054,7 +2054,7 @@
     "lodash" "^4.17.15"
     "redent" "^3.0.0"
 
-"@testing-library/react@^13.0.0":
+"@testing-library/react@^13.0.1":
   "integrity" "sha512-zeHx3PohYYp+4bTJwrixQY8zSBZjWUGwYc7OhD1EpWTHS92RleApLoP72NdwaWxOrM1P1Uezt3XvGf6t2XSWPQ=="
   "resolved" "https://registry.npmjs.org/@testing-library/react/-/react-13.0.1.tgz"
   "version" "13.0.1"
