@@ -27,7 +27,33 @@ export const Form = () => {
     setInputFields((prevState) => ({ ...prevState, creditCard: result }));
   };
 
-  const tempChange = () => {};
+  /**
+   * Handle CVC input
+   * Only allow 3 digits
+   */
+  const handleChangeCVC = (value: string) => {
+    const newInput = value.replace(/\D/g, '');
+    if (newInput.length > 3) return;
+
+    setInputFields((prevState) => ({ ...prevState, cvc: newInput }));
+  };
+
+  /**
+   * Handle Date input
+   * Only allow 4 digits
+   * Add '/' in the middle
+   */
+  const handleChangeExpDate = (value: string) => {
+    const newInput = value.replace(/\D/g, '');
+    if (newInput.length > 4) return;
+    if (newInput.length < 3) {
+      setInputFields((prevState) => ({ ...prevState, expDate: newInput }));
+      return;
+    }
+    const result = newInput.substring(0, 2) + '/' + newInput.substring(2);
+
+    setInputFields((prevState) => ({ ...prevState, expDate: result }));
+  };
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -47,9 +73,9 @@ export const Form = () => {
           error={errors.creditCardError}
         />
         <FormRow justify="center" gap="0 1rem">
-          <InputField onChange={tempChange} value={inputFields.cvc} id="cvc" label="CVC" placeholder="CVC" error={errors.cvcError} />
+          <InputField onChange={handleChangeCVC} value={inputFields.cvc} id="cvc" label="CVC" placeholder="CVC" error={errors.cvcError} />
           <InputField
-            onChange={tempChange}
+            onChange={handleChangeExpDate}
             value={inputFields.expDate}
             id="date"
             label="Expiry Date"
