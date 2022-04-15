@@ -1,15 +1,13 @@
+import { Form } from './components/Form';
+import { Navbar } from './components/Navbar';
 import GlobalStyle from './globalStyles';
 
 function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<div>nav</div>
-			<div>welcome</div>
-			<div>input</div>
-			<div>input</div>
-			<div>input</div>
-			<div>button</div>
+			<Navbar />
+			<Form />
 		</>
 	);
 }
