@@ -5,8 +5,8 @@ interface IMenuStyledPros {
   show?: boolean;
 }
 
-export const Nav = styled.nav`
-  background: black;
+export const Nav = styled.nav<IMenuStyledPros>`
+  background: ${(props) => (props.show ? '#262626f2' : 'black')};
   color: white;
   height: 80px;
   display: flex;
