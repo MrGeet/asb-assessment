@@ -1,15 +1,15 @@
-import { Form } from './components/Form';
+import { HomeScreen } from './components/HomeScreen';
 import { Navbar } from './components/Navbar';
 import GlobalStyle from './globalStyles';
 
 function App() {
-	return (
-		<>
-			<GlobalStyle />
-			<Navbar />
-			<Form />
-		</>
-	);
+  return (
+    <>
+      <GlobalStyle />
+      <Navbar />
+      <HomeScreen />
+    </>
+  );
 }
 
 export default App;
